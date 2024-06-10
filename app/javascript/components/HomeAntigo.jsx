@@ -6,7 +6,7 @@ const Home = () => {
     const [books, setBooks] = useState([])
 
     useEffect(() => {
-        const url = "http://localhost:3000/authors/Robyn%20Bryant";
+        //const url = "http://localhost:3000/authors/Robyn%20Bryant";
         fetch(url)
           .then((res) => {
             if (res.ok) {
@@ -27,9 +27,21 @@ const Home = () => {
             <h2>{book.authors}</h2>
             <h2>{book.publishedDate}</h2>
             <h2>{book.publisher}</h2>
+            <img
+              src={book.imageLinks.thumbnail+".jpg"}
+              alt={`${book.title} image`}
+              className=""
+            />
             <h2>{book.imageLinks.thumbnail}</h2>
         </div>
       ))
+
+      const noBooks = () => {
+        return(
+          <>
+            <p>sasa</p>
+          </>
+        )};
       return(
             <div className="row">
                 {books.length > 0 ? allBooks : noBooks}
