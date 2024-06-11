@@ -32,7 +32,7 @@ class AuthorsController < ApplicationController
         "publisher": item["volumeInfo"]["publisher"],
         "thumbnail": thumbnail,
       }
-      
+
       list_books.push(book)
     end
 

@@ -19,19 +19,24 @@ const Home = () => {
       }, []);
 
     const allBooks = books.map((book, index) => (
-    <div key={index}>
-        <div>
-            <p>{book["title"]}</p>
-            <p>{book["subtitle"]}</p>
-            <p>{book["description"]}</p>
-            <p>{book["authors"]}</p>
-            <p>{book["publishedDate"]}</p>
-            <p>{book["publisher"]}</p>
-            <img
-              src={book["thumbnail"]}
-              alt={`${book.title} image`}
-              className="bookImage"
-            />
+    <div key={index} className="box">
+
+        <div className="book-box">
+            <div className="book-title-img">
+                <img
+                    src={book["thumbnail"]}
+                    alt={`${book.title} image`}
+                    className="bookImage"
+                />
+            </div>
+            <div className="book-info">
+                <p>{book["title"]}</p>
+                <p>{book["suntitle"]}</p>
+                <p>{book["publishedDate"]}</p>
+                <p>{book["authors"]}</p>
+                <p>{book["publisher"]}</p>
+            </div>
+
         </div>
     </div>
     ));
@@ -51,8 +56,10 @@ const Home = () => {
           >
             View Recipes
           </Link>
-
-          {allBooks}
+        <div className="books">
+            {allBooks}
+        </div>
+          
         
     </div>
     )};
