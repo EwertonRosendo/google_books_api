@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   
   get "/home", to: 'homepage#index'
-  
+  get "/seach", to: 'homepage#index'
 
   get "/titles/:title", to: "titles#show"
   

@@ -5,11 +5,15 @@ class AuthorsController < ApplicationController
   def show
   end
 
-  def show
+  def show(*args)
 
     author = params[:author]
+    title = params[:title]
+    publisher = params[:publisher]
 
-    url = "https://www.googleapis.com/books/v1/volumes?q=inauthor:#{author}&startIndex=0&maxResults=10&key=AIzaSyDXXnIr_YKRWAmhO5c0arzwTNj2Dys2h_k"
+    #url = "https://www.googleapis.com/books/v1/volumes?q=title:#{title}&inpublisher:#{publisher}&inauthor:#{author}&startIndex=0&maxResults=10&key=AIzaSyDXXnIr_YKRWAmhO5c0arzwTNj2Dys2h_k"
+    url = "https://www.googleapis.com/books/v1/volumes?q=title:ruby&key=AIzaSyDXXnIr_YKRWAmhO5c0arzwTNj2Dys2h_k"
+    
     uri = URI(url)
     response = JSON.parse(Net::HTTP.get(uri))
     list_books = []
@@ -18,7 +22,7 @@ class AuthorsController < ApplicationController
       authors = ""
       
       item["volumeInfo"]["authors"].each do |author|
-        authors += author
+        authors += author+"   "
       end
       thumbnail = item.dig("volumeInfo", "imageLinks", "thumbnail") ? item["volumeInfo"]["imageLinks"]["thumbnail"] : "https://media.baamboozle.com/uploads/images/8842/1650077126_214183.jpeg"
 
